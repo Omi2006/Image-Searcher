@@ -1,6 +1,7 @@
 div {
     display: flex;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .form-box {
@@ -17,7 +18,12 @@ body {
 }
 
 img {
-    margin: 20px;
     max-width: 400px;
     min-width: 100px;
+}
+
+.submit {
+    background-color: aqua;
+    width: 150px;
+    margin-top: 20px;
 }
