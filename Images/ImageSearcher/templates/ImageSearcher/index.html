@@ -1,0 +1,19 @@
+{% extends "ImageSearcher/layout.html" %}
+
+{% block body %}
+
+    <div>
+        <h1>Search for your images here</h1>
+    </div>
+    <form action="{% url 'ImageSearcher:results' %}" method="POST">
+        {% csrf_token %}
+        <div>
+            {% for field in form %}
+                <label class="form-label" for="{{ field.name }}">{{ field.label }}</label>
+                {{ field }}
+            {% endfor %}
+        </div>
+        <input type="submit" style="margin: 10px;">
+    </form>
+
+{% endblock %}

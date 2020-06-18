@@ -1,0 +1,21 @@
+{% extends "ImageSearcher/layout.html" %}
+
+{% block body %}
+
+    <div>
+        <h1>These are the results we got:</h1>
+    </div>
+
+    {% for image in images %}
+        <div>
+            <img src="{{ image }}" >
+        </div>
+
+    {% empty %}
+        <h2>Looks like we couldn't find any images.</h2>
+
+    {% endfor %}
+
+    <footer><a href="{{ url }}">Wikipedia article</a></footer>
+
+{% endblock %}

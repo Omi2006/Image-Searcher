@@ -1,0 +1,23 @@
+div {
+    display: flex;
+    justify-content: center;
+}
+
+.form-box {
+    margin-right: 30px;
+    margin-left: 10px
+}
+
+.form-label {
+    color: rgb(109, 57, 33);
+}
+
+body {
+    background-color: rgb(220, 224, 157);
+}
+
+img {
+    margin: 20px;
+    max-width: 400px;
+    min-width: 100px;
+}
