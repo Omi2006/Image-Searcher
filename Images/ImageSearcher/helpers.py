@@ -12,7 +12,6 @@ def get_images(url, query=None):
     else:
         site = url
 
-    print(site)
     try:
         html = urlopen(site)
     except:
