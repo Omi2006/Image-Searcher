@@ -4,8 +4,9 @@ from django import forms
 from . import helpers
 
 class NewImageForm(forms.Form):
-    query = forms.CharField(widget = forms.TextInput(attrs={'class' : 'form-box'}) ,label= "Image name")
+    query = forms.CharField(widget = forms.TextInput(attrs={'class' : 'form-box'}), label= "Image name", required=False)
     amount = forms.IntegerField(widget = forms.TextInput(attrs={'class' : 'form-box'}), label= "Number of images (15 at most)", min_value = 1, max_value = 15)
+    site = forms.URLField(label = "site to search in")
 
 def index(request):
     return render(request, "ImageSearcher/index.html", {
@@ -17,10 +18,19 @@ def results(request):
     if form.is_valid():
         query = form.cleaned_data["query"]
         amount = form.cleaned_data["amount"]
+        site = form.cleaned_data["site"]
 
-        images, url = helpers.get_images(query)
+        images, site = helpers.get_images(site, query)
+
+        if images == "Url not found":
+            return HttpResponse(images)
 
         return render(request, "ImageSearcher/results.html", {
             "images": images[:amount],
-            "url": url
+            "url": site
+        })
+    
+    else:
+        return render("GET", "ImageSearcher/index.html", {
+            form: form
         })
